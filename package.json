@@ -8,7 +8,7 @@
     "start": "node --disable-warning=ExperimentalWarning src/server.js",
     "test": "node --disable-warning=ExperimentalWarning --test",
     "test:couverture": "node --disable-warning=ExperimentalWarning --test --experimental-test-coverage --test-coverage-include=src/**",
-    "test:caracterisation": "node --disable-warning=ExperimentalWarning --test test/caracterisation/",
+    "test:caracterisation": "node --disable-warning=ExperimentalWarning --test test/caracterisation/*.test.js",
     "bench": "node --disable-warning=ExperimentalWarning scripts/bench-export.js",
     "lint": "eslint .",
     "start:local": "node --disable-warning=ExperimentalWarning --env-file=.env src/server.js"
