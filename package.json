@@ -13,6 +13,7 @@
     "arrondi": "node scripts/tester-arrondi.js",
     "arrondi:appli": "node scripts/tester-arrondi.js appli",
     "prix": "node scripts/tester-prix.js",
+    "reference": "node scripts/tester-reference.js",
     "lint": "eslint .",
     "start:local": "node --disable-warning=ExperimentalWarning --env-file=.env src/server.js"
   },
