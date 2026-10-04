@@ -10,6 +10,8 @@
     "test:couverture": "node --disable-warning=ExperimentalWarning --test --experimental-test-coverage --test-coverage-include=src/**",
     "test:caracterisation": "node --disable-warning=ExperimentalWarning --test test/caracterisation/*.test.js",
     "bench": "node --disable-warning=ExperimentalWarning scripts/bench-export.js",
+    "arrondi": "node scripts/tester-arrondi.js",
+    "arrondi:appli": "node scripts/tester-arrondi.js appli",
     "lint": "eslint .",
     "start:local": "node --disable-warning=ExperimentalWarning --env-file=.env src/server.js"
   },
