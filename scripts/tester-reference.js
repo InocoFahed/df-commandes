@@ -1,11 +1,12 @@
 'use strict';
 
 // Teste la fonction de validation de référence produit, quel que soit son nom.
-//   npm run reference
+//   npm run reference                          -> src/validation/reference.js
+//   npm run reference -- src/validation/essai.js   -> un autre fichier
 
 const path = require('node:path');
 
-const FICHIER = 'src/validation/reference.js';
+const FICHIER = process.argv[2] || 'src/validation/reference.js';
 
 const CAS = [
   { reference: 'VIS-INOX-6X60', attendu: true, regle: 'trois segments valides' },
@@ -22,7 +23,7 @@ const CAS = [
 function charger() {
   let module;
   try {
-    module = require(path.join(__dirname, '..', FICHIER));
+    module = require(path.resolve(__dirname, '..', FICHIER));
   } catch (erreur) {
     if (erreur.code !== 'MODULE_NOT_FOUND') throw erreur;
     console.log(`Fichier ${FICHIER} introuvable : créez-le, puis relancez.`);
