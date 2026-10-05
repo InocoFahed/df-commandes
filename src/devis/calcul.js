@@ -4,6 +4,7 @@ const TAUX_TVA = 0.2;
 const SEUIL_PORT_GRATUIT = 500;
 const FRAIS_PORT = 25;
 const REMISE_GRAND_COMPTE = 0.05;
+const REMISE_MAX = 0.15;
 
 function arrondir(montant) {
   return Math.round(montant * 100) / 100;
@@ -12,7 +13,7 @@ function arrondir(montant) {
 function tauxRemiseQuantite(quantite) {
   if (quantite >= 100) return 0.12;
   if (quantite >= 50) return 0.08;
-  if (quantite > 10) return 0.05;
+  if (quantite >= 10) return 0.05;
   return 0;
 }
 
@@ -42,7 +43,9 @@ function calculerDevis(client, lignes) {
 
   let remiseClient = 0;
   if (client.grand_compte) {
-    remiseClient = totalNet * REMISE_GRAND_COMPTE;
+    const remisesQuantite = details.reduce((somme, d) => somme + d.remise, 0);
+    const plafondRestant = totalBrut * REMISE_MAX - remisesQuantite;
+    remiseClient = Math.min(totalNet * REMISE_GRAND_COMPTE, Math.max(0, plafondRestant));
     totalNet -= remiseClient;
   }
 
