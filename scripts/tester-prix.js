@@ -11,6 +11,8 @@ const CAS = [
   { montant: 12.5, attendu: '12,50 €' },
   { montant: 0, attendu: '0,00 €' },
   { montant: 1234.5, attendu: '1 234,50 €' },
+  { montant: -12.5, attendu: '-12,50 €' },
+  { montant: -1234.5, attendu: '-1 234,50 €' },
 ];
 
 // Intl.NumberFormat place des espaces insécables : on les compare comme des espaces ordinaires.
@@ -50,15 +52,20 @@ for (const { montant, attendu } of CAS) {
   if (!juste) erreurs += 1;
   console.log(`  ${montant} -> ${obtenu}, attendu ${attendu} : ${juste ? 'juste' : 'FAUX'}`);
 }
-console.log(erreurs === 0 ? 'Bilan : les 3 prix sont justes.' : `Bilan : ${erreurs} prix faux sur 3.`);
+console.log(erreurs === 0
+  ? `Bilan : les ${CAS.length} prix sont justes.`
+  : `Bilan : ${erreurs} prix faux sur ${CAS.length}.`);
 
 let refuse = false;
 let renvoye;
+let err = '';
+
 try {
   renvoye = formaterPrix('abc');
-} catch {
+} catch (erreur) {
+  err = erreur;
   refuse = true;
 }
 console.log(refuse
-  ? "Montant invalide 'abc' : refusé par une erreur. Étape 3 faite."
+  ? "Montant invalide 'abc' : refusé par une erreur. Étape 3 faite. " + err
   : `Montant invalide 'abc' : renvoie ${espacesOrdinaires(renvoye)}, pas encore refusé (étape 3).`);

@@ -4,4 +4,4 @@ Une entrée par demande significative faite à Copilot pendant les TP. Ce journa
 
 | TP | Prompt envoyé (ou résumé fidèle) | Ce que Copilot a produit | Ce que j’ai gardé, corrigé ou refusé, et pourquoi |
 |---|---|---|---|
-| exemple | « Écris les tests de `calculerLigne` avec node:test, à partir de docs/regles-remises.md, un test par règle et par seuil » | 9 tests, dont un sur le seuil de 10 unités | Gardé. Refusé un test qui vérifiait un prix négatif accepté : la spec le refuse |
+| ch01 | « Écris une fonction JavaScript arrondirAuCentime(montant) qui arrondit un montant en euros au centime le plus proche... » | Math.round((montant + Number.EPSILON) * 100) / 100, présentée comme adaptée aux totaux TTC. npm run arrondi : 1 arrondi faux sur 3 (10,075 € donne 10,07 €) | Refusée : fausse sur 10,075 €. L’application a le même défaut : npm run arrondi:appli donne 3 arrondis faux sur 3 |
