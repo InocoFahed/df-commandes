@@ -4,6 +4,10 @@ API de Delmas & Fournier.
 
 Toutes les clés et tous les mots de passe présents dans ce dépôt, y compris dans son historique, sont fictifs et invalides.
 
+## Catalogue de produits
+
+`GET /produits` retourne le catalogue en JSON. Le paramètre facultatif `categorie` filtre par catégorie, et `q` recherche une correspondance partielle dans la référence ou le libellé, sans tenir compte des majuscules ni des accents. Les deux paramètres peuvent être combinés, par exemple `GET /produits?q=cable&categorie=électricité`.
+
 ```
 npm install
 npm start
